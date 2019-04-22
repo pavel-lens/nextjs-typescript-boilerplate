@@ -2,10 +2,10 @@
   "name": "with-typescript",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "type-check": "tsc"
+    "start": "nodemon",
+    "build": "next build && tsc && tsc --project tsconfig.server.json",
+    "start:prod": "cross-env NODE_ENV=production node .next/server",
+    "ts:check": "tsc"
   },
   "dependencies": {
     "@zeit/next-typescript": "^1.1.1",
@@ -20,6 +20,9 @@
     "@types/react-dom": "16.0.11",
     "@types/styled-components": "^4.1.14",
     "babel-plugin-styled-components": "^1.10.0",
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.11",
+    "ts-node": "^8.1.0",
     "typescript": "3.2.4"
   },
   "license": "ISC"

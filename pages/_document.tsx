@@ -1,10 +1,15 @@
 import * as React from 'react';
-import Document, { NextDocumentContext } from 'next/document';
+import Document, {
+  NextDocumentContext,
+  DefaultDocumentIProps,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: NextDocumentContext) {
-    const sheet = new ServerStyleSheet();
+  static async getInitialProps(
+    ctx: NextDocumentContext
+  ): Promise<DefaultDocumentIProps> {
+    const sheet: ServerStyleSheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
     try {
@@ -14,9 +19,13 @@ export default class MyDocument extends Document {
             sheet.collectStyles(<App {...props} />),
         });
 
-      const initialProps = await Document.getInitialProps(ctx);
+      const initialProps: DefaultDocumentIProps = await Document.getInitialProps(
+        ctx
+      );
+
       return {
         ...initialProps,
+        // @ts-ignore
         styles: (
           <>
             {initialProps.styles}
