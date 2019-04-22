@@ -38,9 +38,7 @@ class ListDetailPage extends React.Component<Props> {
     }
 
     return (
-      <Layout
-        title={`${item ? item.name : 'Detail'} | Next.js + TypeScript Example`}
-      >
+      <Layout title={`${item ? item.name : 'Detail'} | Next.js + TypeScript Example`}>
         {item && <ListDetail item={item} />}
       </Layout>
     );
